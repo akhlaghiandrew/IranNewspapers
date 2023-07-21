@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 import os
-newspaper='jomhouri_eslami'
-month='07_1400'
+#should be adapted to do more than a month at a time, one paper at a time, these inputs will need to be change for each paper, each month
+newspaper=""
+month=""
+path_to_paper_directory=""
 list_issues=[]
-os.chdir(f'/Users/andrewakhlaghi/Desktop/1year/{newspaper}/{month}')
+os.chdir(f'{path_to_paper_directory}/{newspaper}/{month}')
 
 for issue in os.listdir():
     list_issues.append(issue)
