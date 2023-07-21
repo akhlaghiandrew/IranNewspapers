@@ -2,4 +2,4 @@
 
 -Tesseract \
 -ImageMagik \
--Sellenium \
+-Sellenium 
