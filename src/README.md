@@ -1,5 +1,5 @@
 ###Dependencies:
 
--Tesseract 
--ImageMagik
--Sellenium
+-Tesseract \
+-ImageMagik \
+-Sellenium \
