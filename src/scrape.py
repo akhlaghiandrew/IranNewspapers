@@ -7,13 +7,29 @@ import re
 import time
 import random
 
+import requests 
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import re
+import time
+import random
+
 list_papers=["Ettelaat","JomhouriEslami","KayhanNews"]
 list_urls=[]
 
-#creates list of urls for every issue of a paper 
-for paper in list_papers:
-  for i in range(1,14):
-    url=f"https://www.pishkhan.com/pdfviewer.php?paper={paper}&date=1401{str(2).zfill(2)}{str(i).zfill(2)}"
+#collects dates of publication one month at a time
+r=requests.get(f"https://www.pishkhan.com/rooznameh/Ettelaat?date=140004")
+print(r)
+list_dates=re.findall("140004(\d+)",str(r.text))
+set_dates=set(list_dates)
+
+#check for debugging
+print(set_dates)
+
+#creates urls for all issues of a newspaper in a month
+for paper in list_papers_:
+  for i in set_dates: 
+    url=f"https://www.pishkhan.com/pdfviewer.php?paper={paper}&date=1400{str(4).zfill(2)}{str(i).zfill(2)}"
     list_urls.append(url)
 
 #wait times are meant to prevent cloudflare IP blocking
