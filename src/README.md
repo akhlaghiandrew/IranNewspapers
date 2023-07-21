@@ -1,1 +1,4 @@
-
+###Dependencies:
+-Tesseract 
+-ImageMagik
+-Sellenium
