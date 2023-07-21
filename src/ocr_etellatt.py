@@ -12,11 +12,13 @@ import shutil
 from difflib import SequenceMatcher
 import re
 
+#Due to processing time, it is preferable to OCR one month of newspapers at a time
 issue="14000506"
 month="05_1400"
+path_to_newspaper_directory=""
+os.chdir(f"{path_to_newspaper_directory}/{month}/{issue}/")
 
-os.chdir(f"/Users/andrewakhlaghi/Desktop/1year/etelaat/{month}/{issue}/")
-
+#Tesseract only accepts jpg or tiff files, DPI optimized for tesseract
 for file in os.listdir():
   print(file)
   name=file[9:-4]
@@ -40,6 +42,8 @@ def sort_contours(cnts, method="left-to-right"):
   #return the list of sorted contours and bounding boxes
   return (cnts, boundingBoxes)
 
+#Verticle and Horizontal kernels need to be adjusted for different newspapers
+#cv2.MORPH_RECT for Kayhan and Jomhouri-ye Islami
 for file in os.listdir():
   if file.endswith(".jpg"):
     try:
@@ -162,6 +166,7 @@ for file in set_to_be_removed:
 os.mkdir("articles_pic")
 os.mkdir("articles_text")
 
+#each advertisement will have it's own folder, including the image of the advertisement and the OCR text file
 for file in os.listdir():
   if file.endswith(".jpg"):
     os.rename(file,f"/Users/andrewakhlaghi/Desktop/1year/etelaat/{month}/{issue}/articles_pic/"+file)
