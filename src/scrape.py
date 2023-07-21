@@ -10,11 +10,13 @@ import random
 list_papers=["Ettelaat","JomhouriEslami","KayhanNews"]
 list_urls=[]
 
+#creates list of urls for every issue of a paper 
 for paper in list_papers:
   for i in range(1,14):
     url=f"https://www.pishkhan.com/pdfviewer.php?paper={paper}&date=1401{str(2).zfill(2)}{str(i).zfill(2)}"
     list_urls.append(url)
 
+#wait times are meant to prevent cloudflare IP blocking
 for url in list_urls:
   wait_time=random.randint(20,30)
   print(wait_time)
